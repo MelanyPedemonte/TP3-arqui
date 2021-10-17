@@ -26,7 +26,7 @@ public class LifeCycleEMF implements ServletContextListener {
 	
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		emf = Persistence.createEntityManagerFactory("Registro");
+		emf = Persistence.createEntityManagerFactory("Example");
 		
 	}
 	

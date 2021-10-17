@@ -28,22 +28,6 @@ public class StudentRest {
 		return LifeCycleEMF.getStudentRepository().getStudents();
 	}
 	
-	/*
-	 * Servicio para persistir un estudiante. 
-	 * 
-	 * Estructura de JSON para probar: 
-	 * 
-	 * { 	"numLibret": 150889,
-	 * 		"name": "Marta",
-	 *		"lastName": "Lopez",
-	 * 		"gender": "Female",
-	 *		"age": "20",
-	 *		"numDoc": "42375109" ,
-	 *		"city": "Tandil" 
-	 *	}
-	 * 
-	 */
-	
 	@POST 
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)

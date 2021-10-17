@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+<title>TP Integrador 3</title>
+</head>
+<body>
+
+	<div class="container mt-3 mb-3">
+		<h3>A. Agregar Estudiante</h3>
+		<button type="button" class="btn btn-secondary" data-toggle="modal"
+			data-target="#addStudent">Nuevo Alumno</button>
+	</div>
+
+	<div class="modal fade" id="addStudent" tabindex="-1" role="dialog"
+		aria-labelledby="addStudent " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Agregar
+						Alumno</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="num-book">Numero de libreta Universitaria</label> <input
+								type="text" class="form-control" id="num-libret"
+								aria-describedby="unique-value"> <small
+								id="unique-value" class="form-text text-muted"> El
+								numero de libreta no debera estar repetido.</small>
+						</div>
+						<div class="form-group">
+							<label for="num-doc"> Numero de documento </label> <input
+								type="number" class="form-control" id="num-doc" required>
+						</div>
+						<div class="form-group">
+							<label for="name">Nombre </label> <input type="text"
+								class="form-control" id="name" required>
+						</div>
+						<div class="form-group">
+							<label for="lastname"> Apellido </label> <input type="text"
+								class="form-control" id="lastname" required>
+						</div>
+						<div class="form-group">
+							<label for="gender">Genero</label> <select class="form-control"
+								id="gender">
+								<option value="male">Hombre</option>
+								<option value="female">Mujer</option>
+								<option value="other">Otro</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="age"> Edad </label> <input type="number"
+								class="form-control" id="age" required>
+						</div>
+						<div class="form-group">
+							<label for="city"> Ciudad </label> <input type="text"
+								class="form-control" id="city" required>
+						</div>
+						<button type="button" id="add-student" class="btn btn-primary"
+							data-dismiss="modal">Agregar</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	
+	<div class="container mt-3 mb-3">
+		<h3>C. Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.</h3>
+		<p>ordenado por el nombre de forma ascendente</p>
+		<button type="button" class="btn btn-secondary"
+			onclick="getAllStudent()">GET</button>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTable">
+			<thead>
+				<tr>
+					<th scope="col">N. Libreta</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Edad</th>
+					<th scope="col">Genero</th>
+					<th scope="col">N. Documento</th>
+					<th scope="col">Ciudad</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTable">
+
+			</tbody>
+		</table>
+	</div>
+	<script type="text/javascript"
+		src="http://momentjs.com/downloads/moment-with-locales.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="main.js"></script>
+	<!-- JS, Popper.js, and jQuery -->
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+		integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</body>
+</html>

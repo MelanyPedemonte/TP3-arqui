@@ -1,7 +1,12 @@
 package repositories;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import daos.Career;
+import dtos.CareerDTO;
 
 public class CareerRepository {
 	
@@ -26,8 +31,11 @@ public class CareerRepository {
 		return em.find(Career.class, i);
 	}	
 	
-	
-	
-	
-	
+	public List<CareerDTO> getAllCareers() {
+		List<CareerDTO> careers;
+		Query query = em.createQuery(
+				"SELECT new dtos.CareerDTO(c.id, c.nameCareer) FROM Career c ORDER BY c.nameCareer ASC");
+		careers = query.getResultList();
+		return careers;
+	}
 }

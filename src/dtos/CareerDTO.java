@@ -2,15 +2,23 @@ package dtos;
 
 public class CareerDTO {
 	
+	private Integer id;
 	private String career;
 	private Long inscriptions;
 	
 	
 	public CareerDTO(String career, Long inscriptions) {
-		super();
 		this.career = career;
 		this.inscriptions = inscriptions;
 	}
+	
+	
+
+	public CareerDTO(Integer id, String career) {
+		this.id = id;
+		this.career = career;
+	}
+
 
 
 	public String getCareer() {
@@ -33,9 +41,14 @@ public class CareerDTO {
 	}
 
 
+	public Integer getId() {
+		return id;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Career [career=" + career + ", inscriptions=" + inscriptions + "]";
+		return "CareerDTO [id=" + id + ", career=" + career + ", inscriptions=" + inscriptions + "]";
 	}
 
 }
