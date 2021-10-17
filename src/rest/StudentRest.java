@@ -62,7 +62,7 @@ public class StudentRest {
 	/*
 	 * Estructura de JSON valida:
 	 * {
-	 *   "signUpDate": "yyyy-MM-dd hh:mm:ss", (Timestamp formato ISO)
+	 *   "startDate": "yyyy-MM-dd hh:mm:ss", (Timestamp formato ISO)
 	 *   "idCareer": int,
 	 *   "idStudent": int
 	 * }
