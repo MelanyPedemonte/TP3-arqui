@@ -1,21 +1,26 @@
 package repositories;
 
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import daos.Career;
 import daos.Inscription;
 import daos.Student;
+import dtos.RegistrationDTO;
 import dtos.StudentCareerDTO;
 import dtos.StudentDTO;
 
-public class StudentRep {
+public class StudentRepository {
 	
 	private EntityManager em;
 
-	public StudentRep(EntityManager em) {
+	public StudentRepository(EntityManager em) {
 		this.em = em;
 	}
 	
@@ -118,6 +123,38 @@ public class StudentRep {
 		query.setParameter("city", city);
 		students = query.getResultList();
 		return students;
+	}
+	
+	
+	/**
+	 * Se le registra la inscripcion de la carrera del estudiante
+	 * 
+	 * @param student
+	 * @param inscription
+	 * 
+	 */
+	public void enroll(RegistrationDTO r) {
+
+		try {
+
+			Student studentFound = em.find(Student.class, r.getIdStudent());
+			Career careerFound = em.find(Career.class, r.getIdCareer());
+			
+			Inscription inscription = new Inscription();
+			inscription.setCareer(careerFound);
+			SimpleDateFormat datetimeFormatter1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+			Date signupDate = datetimeFormatter1.parse(r.getSignUpDate());
+			Timestamp t1 = new Timestamp(signupDate.getTime());
+			inscription.setStartDate(t1);
+
+			em.getTransaction().begin();
+			studentFound.addCareeres(inscription);
+			em.getTransaction().commit();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	

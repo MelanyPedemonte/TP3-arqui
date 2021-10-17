@@ -19,11 +19,11 @@ import dtos.CareerDTO;
 import dtos.CareerReportDTO;
 
 
-public class InscriptionRep {
+public class InscriptionRepository {
 	
 	private EntityManager em;
 
-	public InscriptionRep(EntityManager em) {
+	public InscriptionRepository(EntityManager em) {
 		this.em = em;
 	}
 	

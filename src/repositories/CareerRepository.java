@@ -3,11 +3,11 @@ package repositories;
 import javax.persistence.EntityManager;
 import daos.Career;
 
-public class CareerRep {
+public class CareerRepository {
 	
 	private EntityManager em;
 
-	public CareerRep(EntityManager em) {
+	public CareerRepository(EntityManager em) {
 		this.em = em;
 	}
 	
