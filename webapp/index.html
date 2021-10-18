@@ -10,6 +10,8 @@
 </head>
 <body>
 
+    <h2>Trabajo Practico Integrador 3, Arquitecturas Web </h2>
+
 	<div class="container mt-3 mb-3">
 		<h3>A. Agregar Estudiante</h3>
 		<button type="button" class="btn btn-secondary" data-toggle="modal"
@@ -117,6 +119,8 @@
 		<p>ordenado por el nombre de forma ascendente</p>
 		<button type="button" class="btn btn-secondary"
 			onclick="getAllStudent()">GET</button>
+		<button type="button" class="btn btn-secondary"
+			onclick="ocultarTablaC()">Ocultar Tabla</button>
 	</div>
 	<div class="container mt-3 mb-3">
 		<table class="table" id="myTable">
@@ -165,7 +169,7 @@
 					<option value="other">Otro</option>
 				</select>
 			</div>
-			<button type="button" class="btn btn-primary"
+			<button type="button" class="btn btn-secondary"
 				id="get-student-byGender">GET</button>
 		</form>
 	</div>
@@ -190,9 +194,10 @@
 	<div class="container mb-2">
 		<h3>F. Obtener las carreras con inscriptos y ordenadas por cantidad.</h3>
 		<button type="button" class="btn btn-primary" id="getCareers">GET</button>
+		<button type="button" class="btn btn-primary" id="ocultarTablaF" onclick="ocultarTablaF()">Ocultar Tabla</button>
 	</div>
 	<div class="container">
-		<table class="table" id="myTable">
+		<table class="table" id="myTable2">
 			<thead>
 				<tr>
 					<th scope="col">Carrera</th>
@@ -223,7 +228,7 @@
 				</select>
 			</div>
 			<small class="form-text text-muted"> Una combinacion valida	es: VP Accounting y Betong</small>
-			<button type="button" class="btn btn-primary"
+			<button type="button" class="btn btn-secondary"
 				id="get-student-carrer-city">GET</button>
 		</form>
 	</div>
@@ -249,9 +254,10 @@
 	<div class="container mb-2">
 		<h3>H. Obtener reporte de carreras</h3>
 		<button type="button" class="btn btn-primary" id="careers-report-btn">GET</button>
+		<button type="button" class="btn btn-primary" id="ocultarReport" onclick="ocultarTablaH()">Ocultar Tabla</button>
 	</div>
 	<div class="container">
-		<table class="table" id="myTable">
+		<table class="table" id="myTable1">
 			<thead>
 				<tr>
 					<th scope="col">Carrera</th>

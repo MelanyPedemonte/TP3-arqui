@@ -19,7 +19,7 @@ import dtos.StudentDTO;
 public class StudentRest {
 
 	/*
-	 * Servicio para recuperar todas los estudiantes. 
+	 * Servicio para recuperar todos los estudiantes. 
 	 */
 	
 	@GET
@@ -60,12 +60,6 @@ public class StudentRest {
 	}
 	
 	/*
-	 * Estructura de JSON valida:
-	 * {
-	 *   "startDate": "yyyy-MM-dd hh:mm:ss", (Timestamp formato ISO)
-	 *   "idCareer": int,
-	 *   "idStudent": int
-	 * }
 	 * 
 	 * Servicio para matricular a un estudiante en una carrera. 
 	 *
@@ -82,8 +76,8 @@ public class StudentRest {
 
 	
 	/*
-	 * Llamado del servicio rest y su funcion es 
-	 * obtener los estudiantes en relacion a una carrera 
+	 * Llamado al servicio que 
+	 * obtiene los estudiantes en relacion a una carrera 
 	 * y la ciudad de residencia.
 	 * 
 	 * */
@@ -97,12 +91,8 @@ public class StudentRest {
 	}
 	
 	/*
-	 * Llamado del servicio rest que sirve
-	 * para obtener todas las ciudades de residencia de los estudiantes
-	 * 
-	 * URL para probar: 
-	 * 
-	 * "/14/Tandil"  
+	 * Llamado al servicio que devuelve  las ciudades
+	 * de los estudiantes 
 	 * 
 	 * */
 	@GET

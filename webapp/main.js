@@ -8,6 +8,8 @@ document.querySelector("#get-student-carrer-city").addEventListener("click", get
 
 function getAllStudent() {
 	let bodyTable = document.getElementsByClassName('bodyTable')[0];
+	let bodyTable1 = document.getElementById('myTable')
+	bodyTable1.style.display = "table";
 	axios.get('http://localhost:8080/ArquitecturaWebTp3/api/student')
 		.then(function(response) {
 			
@@ -151,7 +153,6 @@ function getStudentByCareerCity() {
 	let career = document.querySelector("#careerList").value;
 	let city = document.querySelector("#cityList").value;
 	let bodyTable = document.getElementsByClassName('bodyTable')[2];
-	console.log(career);
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/' + career + '/' + city)
 		.then(response => {
 			return response.json()
@@ -211,6 +212,8 @@ function getCities() {
 }
 
 function getReport() {
+	let bodyTable1 = document.getElementById('myTable1')
+	bodyTable1.style.display = "table";
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career/report')
 		.then(response => {
 			return response.json()
@@ -239,11 +242,12 @@ function getReport() {
 }
 
 function getCareers() {
+	let bodyTable1 = document.getElementById('myTable2')
+	bodyTable1.style.display = "table";
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career')
 		.then(response => {
 			return response.json()
 		}).then(function(elements) {
-			console.log(elements);
 			let table = document.querySelector("#career-inscriptions");
 			table.innerHTML = "";
 			elements.forEach(element => {
@@ -265,3 +269,19 @@ getCareersList(selectCareer);
 let careerForInscription = document.getElementById('inscription-career-list');
 getCareersList(careerForInscription);
 getCities();
+
+
+function ocultarTablaC(){
+	let bodyTable = document.getElementById('myTable');
+	bodyTable.style.display = "none";
+}
+
+function ocultarTablaH(){
+	let bodyTable = document.getElementById('myTable1');
+	bodyTable.style.display = "none";
+}
+
+function ocultarTablaF(){
+	let bodyTable = document.getElementById('myTable2');
+	bodyTable.style.display = "none";
+}

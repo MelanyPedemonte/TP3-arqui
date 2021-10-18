@@ -143,6 +143,7 @@ public class StudentRepository {
 			
 			Inscription inscription = new Inscription();
 			inscription.setCareer(careerFound);
+			inscription.setStudent(studentFound);
 			SimpleDateFormat datetimeFormatter1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			Date signupDate = datetimeFormatter1.parse(r.getStartDate());
 			Timestamp t1 = new Timestamp(signupDate.getTime());

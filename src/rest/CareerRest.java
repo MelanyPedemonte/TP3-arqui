@@ -16,7 +16,7 @@ import dtos.StudentDTO;
 public class CareerRest {
 
 	/*
-	 * Servicio para recuperar todas las carreras con inscriptos y dicha cantidad. 
+	 * Servicio que recupera las carreras con inscriptos y dicha cantidad. 
 	 */
 	
 	@GET
@@ -37,7 +37,7 @@ public class CareerRest {
 	}
 	
 	/*
-	 * Servicio para recuperar todas las carreras. 
+	 * Servicio que recupera todas las carreras. 
 	 */
 	
 	@GET
