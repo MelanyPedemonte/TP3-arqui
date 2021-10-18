@@ -3,7 +3,7 @@ document.querySelector("#get-student").addEventListener("click", getStudentByNum
 document.querySelector("#get-student-byGender").addEventListener("click", getStudentsByGender);
 document.querySelector("#getCareers").addEventListener("click", getCareers);
 document.querySelector("#inscription-button").addEventListener("click", registerStudent);
-//document.querySelector("#careers-report-btn").addEventListener("click", getReport);
+document.querySelector("#careers-report-btn").addEventListener("click", getReport);
 document.querySelector("#get-student-carrer-city").addEventListener("click", getStudentByCareerCity);
 
 function getAllStudent() {
@@ -210,7 +210,33 @@ function getCities() {
 		);
 }
 
-
+function getReport() {
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career/report')
+		.then(response => {
+			return response.json()
+		}).then(function(elements) {
+			//console.log(elements);
+			let table = document.querySelector("#career-report");
+			table.innerHTML = "";
+			elements.forEach(element => {
+				let newRow = table.insertRow(-1);
+				let cell1 = newRow.insertCell(0);
+				let newText1 = document.createTextNode(element['nameCareer']);
+				cell1.appendChild(newText1);
+				let cell2 = newRow.insertCell(1);
+				let newText2 = document.createTextNode(element['year']);
+				cell2.appendChild(newText2);
+				let cell3 = newRow.insertCell(2);
+				let newText3 = document.createTextNode(element['qEnrolled']);
+				cell3.appendChild(newText3);
+				let cell4 = newRow.insertCell(3);
+				let newText4 = document.createTextNode(element['qGraduates']);
+				cell4.appendChild(newText4);
+			})
+		}).catch(function(error) {
+			console.log(error);
+		});
+}
 
 function getCareers() {
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career')
