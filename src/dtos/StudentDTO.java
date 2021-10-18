@@ -1,5 +1,7 @@
 package dtos;
 
+import daos.Student;
+
 /**
  * Se usa para mostrar los datos de los Estudiantes.
  *
@@ -23,6 +25,17 @@ public class StudentDTO {
 		this.gender = gender;
 		this.numDoc = numDoc;
 		this.cityResident = cityResident;
+	}
+	
+	public StudentDTO(Student std) {
+		super();
+		this.numBook = (Integer) std.getNumBook();
+		this.name = std.getName();
+		this.lastname = std.getLastname();
+		this.age = (Integer) std.getAge();
+		this.gender = std.getGender();
+		this.numDoc = (Integer) std.getNumDoc();
+		this.cityResident = std.getCityResident();
 	}
 
 	public int getNumBook() {

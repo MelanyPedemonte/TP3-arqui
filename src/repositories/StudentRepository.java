@@ -36,8 +36,10 @@ public class StudentRepository {
 		return s;
 	}
 	
-	public Student getStudentByNumBook(Long nb) {
-		return em.find(Student.class, nb);
+	public StudentDTO getStudentByNumBook(Integer nb) {
+		StudentDTO std = new StudentDTO (em.find(Student.class, nb));
+		//System.out.println(em.find(Student.class,(Integer) nb));
+		return std;
 	}
 	
 	/** 
@@ -90,21 +92,7 @@ public class StudentRepository {
 		return students;
 	}
 
-	/**
-	 * Se retorna un estudiante en base a su libreta universitaria
-	 * 
-	 * @param numLibret
-	 * @return List<StudentDTO>
-	 */
-	@SuppressWarnings("unchecked")
-	public List<StudentDTO> getStudentByNumLibret(int numBook) {
-		List<StudentDTO> s = new ArrayList<StudentDTO>();
-		Query query = em.createQuery(
-				"SELECT new dtos.StudentDTO(s.numBook, s.name, s.lastname, s.age, s.gender, s.numDoc, s.cityResident) FROM Student s WHERE s.numBook = :numBook");
-		query.setParameter("numBook", numBook);
-		s = query.getResultList();
-		return s;
-	}
+	
 	
 	/**
 	 * Se retorna una lista de estudiantes en base a una carrera (id_carrera) y a una ciudad
@@ -137,13 +125,13 @@ public class StudentRepository {
 
 		try {
 
-			Student studentFound = em.find(Student.class, r.getIdStudent());
-			Career careerFound = em.find(Career.class, r.getIdCareer());
+			Student studentFound = em.find(Student.class, r.getNumBook());
+			Career careerFound = em.find(Career.class, r.getId_career());
 			
 			Inscription inscription = new Inscription();
 			inscription.setCareer(careerFound);
 			SimpleDateFormat datetimeFormatter1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-			Date signupDate = datetimeFormatter1.parse(r.getSignUpDate());
+			Date signupDate = datetimeFormatter1.parse(r.getStartDate());
 			Timestamp t1 = new Timestamp(signupDate.getTime());
 			inscription.setStartDate(t1);
 

@@ -2,43 +2,49 @@ package dtos;
 
 public class RegistrationDTO {
 
-	private String signUpDate;
-	private int idCareer;
-	private int idStudent;
+	private String startDate;
+	private int id_career;
+	private int numBook;
 	
 	public RegistrationDTO() {
 		super();
 	}
 
-	public RegistrationDTO(String signUpDate, int idCareer, int idStudent) {
+	public RegistrationDTO(String startDate, int id_career, int numBook) {
 		super();
-		this.signUpDate = signUpDate;
-		this.idCareer = idCareer;
-		this.idStudent = idStudent;
+		this.startDate = startDate;
+		this.id_career = id_career;
+		this.numBook = numBook;
 	}
-	
-	public String getSignUpDate() {
-		return signUpDate;
+
+	public String getStartDate() {
+		return startDate;
 	}
-	public void setSignUpDate(String signUpDate) {
-		this.signUpDate = signUpDate;
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
 	}
-	public int getIdCareer() {
-		return idCareer;
+
+	public int getId_career() {
+		return id_career;
 	}
-	public void setIdCareer(int idCareer) {
-		this.idCareer = idCareer;
+
+	public void setId_career(int id_career) {
+		this.id_career = id_career;
 	}
-	public int getIdStudent() {
-		return idStudent;
+
+	public int getNumBook() {
+		return numBook;
 	}
-	public void setIdStudent(int idStudent) {
-		this.idStudent = idStudent;
+
+	public void setNumBook(int numBook) {
+		this.numBook = numBook;
 	}
 
 	@Override
 	public String toString() {
-		return "RegistrationDTO [signUpDate=" + signUpDate + ", idCareer=" + idCareer + ", idStudent=" + idStudent
-				+ "]";
+		return "RegistrationDTO [startDate=" + startDate + ", id_career=" + id_career + ", numBook=" + numBook + "]";
 	}
+	
+	
 }

@@ -1,10 +1,10 @@
 document.querySelector("#add-student").addEventListener("click", addStudent);
-document.querySelector("#get-student").addEventListener("click", getStudentByLibret);
-document.querySelector("#get-student-byGender").addEventListener("click", getStudentsByGender);
-document.querySelector("#getCareers").addEventListener("click", getCareers);
+document.querySelector("#get-student").addEventListener("click", getStudentByNumBook);
+//document.querySelector("#get-student-byGender").addEventListener("click", getStudentsByGender);
+//document.querySelector("#getCareers").addEventListener("click", getCareers);
 document.querySelector("#inscription-button").addEventListener("click", registerStudent);
-document.querySelector("#careers-report-btn").addEventListener("click", getReport);
-document.querySelector("#get-student-carrer-city").addEventListener("click", getStudentByCareerCity);
+//document.querySelector("#careers-report-btn").addEventListener("click", getReport);
+//document.querySelector("#get-student-carrer-city").addEventListener("click", getStudentByCareerCity);
 
 function getAllStudent() {
 	let bodyTable = document.getElementsByClassName('bodyTable')[0];
@@ -56,18 +56,18 @@ function registerStudent(){
 		alert("Todos los campos son requeridos");
 	}
 	let data = {
-		 "signUpDate": date,
-		 "idCareer": career,
-		 "idStudent": student,
+		 "startDate": date,
+		 "id_career": career,
+		 "numBook": student,
 	}
 	
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/inscription', {
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/inscription', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
 	})
 	.then(response => {
-		getCareers();
+		//getCareers();
 	})
 	.catch(function(error) {
 			console.log(error);
@@ -76,7 +76,7 @@ function registerStudent(){
 
 
 function addStudent() {
-	let num = document.querySelector("#num-libret").value;
+	let num = document.querySelector("#num-Book").value;
 	let name = document.querySelector("#name").value;
 	let lastname = document.querySelector("#lastname").value;
 	let gender = document.querySelector("#gender").value;
@@ -89,16 +89,16 @@ function addStudent() {
 	}
 	
 	let data = {
-		"numLibret": num,
+		"numBook": num,
 		"name": name,
-		"lastName": lastname,
+		"lastname": lastname,
 		"gender": gender,
 		"age": age,
 		"numDoc": doc,
-		"city": city
+		"cityResident": city
 	}
 
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student', {
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student', {
 		method: 'POST',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(data)
@@ -111,16 +111,16 @@ function addStudent() {
 		})
 	}
 
-function getStudentByLibret() {
-	let num = document.querySelector("#num-libret-getBy").value;
-	let span = document.querySelector("#studentByLibret");
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/' + num)
+function getStudentByNumBook() {
+	let num = document.querySelector("#num-book-getBy").value;
+	let span = document.querySelector("#studentByNumBook");
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/' + num)
 		.then(response => {
 			return response.json()
 		}).then(function(student) {
-			span.innerHTML = "Numero de Libreta: " + student.numLibret + " Nombre: " + student.name +
+			span.innerHTML = "Numero de Libreta: " + student.numBook + " Nombre: " + student.name +
 				" Apellido: " + student.lastname + " Edad: " + student.age + " Genero: " + student.gender +
-				" Ciudad: " + student.city;
+				" Ciudad: " + student.cityResident;
 		})
 		.catch(function(error) {
 			console.log(error);
@@ -171,13 +171,14 @@ function getStudentByCareerCity() {
 }
 
 function getCareersList(selectCareer) {
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/career/list')
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career/list')
 		.then(response => {
 			return response.json()
 		}).then(function(careers) {
-			let selectCareer = document.getElementById('careerList');
+			let selectCareer = document.getElementById('inscription-career-list');
+			console.log(careers);
 			for (const index in careers) {
-				selectCareer.options[selectCareer.options.length] = new Option(careers[index]['name'], careers[index]['id']);
+				selectCareer.options[selectCareer.options.length] = new Option(careers[index]['career'], careers[index]['id']);
 			}
 		})
 		.catch(function(error) {
@@ -186,7 +187,7 @@ function getCareersList(selectCareer) {
 
 		);
 }
-
+/*
 function getCities() {
 	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/cities')
 		.then(response => {
@@ -204,9 +205,10 @@ function getCities() {
 		);
 }
 
+*/
 
 function getCareers() {
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/career')
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career')
 		.then(response => {
 			return response.json()
 		}).then(function(elements) {
@@ -253,8 +255,8 @@ function getReport() {
 		});
 }
 
-let selectCareer = document.getElementById('careerList');
-getCareersList(selectCareer);
+//let selectCareer = document.getElementById('careerList');
+//getCareersList(selectCareer);
 let careerForInscription = document.getElementById('inscription-career-list');
 getCareersList(careerForInscription);
-getCities();
+//getCities();

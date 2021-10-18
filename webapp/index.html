@@ -31,11 +31,9 @@
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-							<label for="num-book">Numero de libreta Universitaria</label> <input
-								type="text" class="form-control" id="num-libret"
-								aria-describedby="unique-value"> <small
-								id="unique-value" class="form-text text-muted"> El
-								numero de libreta no debera estar repetido.</small>
+							<label for="num-Book">Numero de libreta Universitaria</label>
+							 <input type="text" class="form-control" id="num-Book" aria-describedby="unique-value">
+								 <small	id="unique-value" class="form-text text-muted"> El numero de libreta no debera estar repetido.</small>
 						</div>
 						<div class="form-group">
 							<label for="num-doc"> Numero de documento </label> <input
@@ -54,7 +52,8 @@
 								id="gender">
 								<option value="male">Hombre</option>
 								<option value="female">Mujer</option>
-								<option value="other">Otro</option>
+								<option value="non-binary">No Binario</option>
+								<option value="other">Otro</option>		
 							</select>
 						</div>
 						<div class="form-group">
@@ -72,7 +71,46 @@
 
 			</div>
 		</div>
+		
 	</div>
+	<div class="container mb-2">
+		<h3>B. Matricular Estudiante</h3>
+		<button type="button" class="btn btn-primary" data-toggle="modal"
+			data-target="#inscription">POST</button>
+	</div>
+	
+	<div class="modal fade" id="inscription" tabindex="-1" role="dialog"
+		aria-labelledby="inscription " aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Matricular Estudiante</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<label for="inscription-career-list">Carrera</label> <select
+								class="form-control" id="inscription-career-list">
+
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="id-student">Numero de libreta del estudiante
+							</label> <input type="text" class="form-control" id="id-student" required>
+							<small id="unique-value" class="form-text text-muted">
+								Algunos id validos son del 100000 al 100199</small>
+						</div>
+						<button type="button" id="inscription-button"
+							class="btn btn-primary" data-dismiss="modal">Matricular</button>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>				
 	
 	<div class="container mt-3 mb-3">
 		<h3>C. Recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.</h3>
@@ -98,6 +136,23 @@
 			</tbody>
 		</table>
 	</div>
+	
+	<div class="container mb-2">
+		<h3>D. Obtener un estudiante por libreta universitaria</h3>
+		<form>
+			<div class="form-group">
+				<label for="num-book-getBy"> Numero de libreta Universitaria </label>
+			    <input type="number" class="form-control"	id="num-book-getBy" required>
+			</div>
+			<button type="button" id="get-student" class="btn btn-primary">
+				GET</button>
+		</form>
+
+		<h4 class="py-3">
+			<span id="studentByNumBook"> </span>
+		</h4>
+	</div>
+	
 	<script type="text/javascript"
 		src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>

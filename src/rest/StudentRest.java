@@ -42,10 +42,10 @@ public class StudentRest {
 	 */
 	
 	@GET
-	@Path("/{numLibret}")
+	@Path("/{numBook}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public StudentDTO getStudent(@PathParam("numLibret") int numLibret) {
-		return LifeCycleEMF.getStudentRepository().getStudentByNumLibret(numLibret).get(0);
+	public StudentDTO getStudent(@PathParam("numBook") Integer numBook) {
+		return LifeCycleEMF.getStudentRepository().getStudentByNumBook(numBook);
 	}
 	
 	/*
