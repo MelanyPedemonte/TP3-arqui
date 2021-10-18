@@ -31,6 +31,10 @@ public class CareerRepository {
 		return em.find(Career.class, i);
 	}	
 	
+	/**
+	 *
+	 * @return
+	 */
 	public List<CareerDTO> getAllCareers() {
 		List<CareerDTO> careers;
 		Query query = em.createQuery(

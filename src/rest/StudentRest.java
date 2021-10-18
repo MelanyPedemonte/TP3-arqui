@@ -96,4 +96,22 @@ public class StudentRest {
 		
 	}
 	
+	/*
+	 * Llamado del servicio rest que sirve
+	 * para obtener todas las ciudades de residencia de los estudiantes
+	 * 
+	 * URL para probar: 
+	 * 
+	 * "/14/Tandil"  
+	 * 
+	 * */
+	@GET
+	@Path("/cities")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<String> getStudentsCities(){
+		StudentRepository instance = LifeCycleEMF.getStudentRepository();
+		return instance.getCities();
+		
+	}
 }
+

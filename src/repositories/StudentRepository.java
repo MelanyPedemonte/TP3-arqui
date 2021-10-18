@@ -113,6 +113,19 @@ public class StudentRepository {
 		return students;
 	}
 	
+	/**
+	 * Se retorna una lista de todas las ciudades de residencias de los estudiantes
+	 * 
+	 * @return List<String>
+	 */
+	public List<String> getCities() {
+		List<String> cities;
+		Query query = em.createQuery("SELECT DISTINCT s.cityResident"
+				+ " FROM Student s");
+		cities = query.getResultList();
+		return cities;
+	}
+	
 	
 	/**
 	 * Se le registra la inscripcion de la carrera del estudiante

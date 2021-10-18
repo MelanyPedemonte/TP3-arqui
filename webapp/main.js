@@ -1,10 +1,10 @@
 document.querySelector("#add-student").addEventListener("click", addStudent);
 document.querySelector("#get-student").addEventListener("click", getStudentByNumBook);
-//document.querySelector("#get-student-byGender").addEventListener("click", getStudentsByGender);
-//document.querySelector("#getCareers").addEventListener("click", getCareers);
+document.querySelector("#get-student-byGender").addEventListener("click", getStudentsByGender);
+document.querySelector("#getCareers").addEventListener("click", getCareers);
 document.querySelector("#inscription-button").addEventListener("click", registerStudent);
 //document.querySelector("#careers-report-btn").addEventListener("click", getReport);
-//document.querySelector("#get-student-carrer-city").addEventListener("click", getStudentByCareerCity);
+document.querySelector("#get-student-carrer-city").addEventListener("click", getStudentByCareerCity);
 
 function getAllStudent() {
 	let bodyTable = document.getElementsByClassName('bodyTable')[0];
@@ -67,7 +67,7 @@ function registerStudent(){
 		body: JSON.stringify(data)
 	})
 	.then(response => {
-		//getCareers();
+		getCareers();
 	})
 	.catch(function(error) {
 			console.log(error);
@@ -132,7 +132,7 @@ function getStudentByNumBook() {
 function getStudentsByGender() {
 	let gender = document.querySelector("#gender-getBy").value;
 	let bodyTable = document.getElementsByClassName('bodyTable')[1];
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/gender/' + gender)
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/gender/' + gender)
 		.then(response => {
 			return response.json()
 		}).then(function(students) {
@@ -151,7 +151,8 @@ function getStudentByCareerCity() {
 	let career = document.querySelector("#careerList").value;
 	let city = document.querySelector("#cityList").value;
 	let bodyTable = document.getElementsByClassName('bodyTable')[2];
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/' + career + '/' + city)
+	console.log(career);
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/' + career + '/' + city)
 		.then(response => {
 			return response.json()
 		}).then(function(students) {
@@ -173,12 +174,16 @@ function getStudentByCareerCity() {
 function getCareersList(selectCareer) {
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career/list')
 		.then(response => {
-			return response.json()
+			//console.log(response);
+			return response.json();
 		}).then(function(careers) {
-			let selectCareer = document.getElementById('inscription-career-list');
-			console.log(careers);
+			let selectCareer = document.getElementById('careerList');
+			let selectCareer2 = document.getElementById('inscription-career-list');
+			//console.log(careers);
 			for (const index in careers) {
+				//console.log(careers[index]['career'], careers[index]['id']);
 				selectCareer.options[selectCareer.options.length] = new Option(careers[index]['career'], careers[index]['id']);
+				selectCareer2.options[selectCareer.options.length] = new Option(careers[index]['career'], careers[index]['id']);
 			}
 		})
 		.catch(function(error) {
@@ -187,9 +192,9 @@ function getCareersList(selectCareer) {
 
 		);
 }
-/*
+
 function getCities() {
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/student/cities')
+	fetch('http://localhost:8080/ArquitecturaWebTp3/api/student/cities')
 		.then(response => {
 			return response.json()
 		}).then(function(cities) {
@@ -205,35 +210,15 @@ function getCities() {
 		);
 }
 
-*/
+
 
 function getCareers() {
 	fetch('http://localhost:8080/ArquitecturaWebTp3/api/career')
 		.then(response => {
 			return response.json()
 		}).then(function(elements) {
+			console.log(elements);
 			let table = document.querySelector("#career-inscriptions");
-			table.innerHTML = "";
-			elements.forEach(element => {
-				let newRow = table.insertRow(-1);
-				let cell1 = newRow.insertCell(0);
-				let newText1 = document.createTextNode(element['careerName']);
-				cell1.appendChild(newText1);
-				let cell2 = newRow.insertCell(1);
-				let newText2 = document.createTextNode(element['inscriptionQuantity']);
-				cell2.appendChild(newText2);
-			})
-		}).catch(function(error) {
-			console.log(error);
-		});
-}
-
-function getReport() {
-	fetch('http://localhost:8080/tp3_ejercicio_integrador/rest/career/report')
-		.then(response => {
-			return response.json()
-		}).then(function(elements) {
-			let table = document.querySelector("#career-report");
 			table.innerHTML = "";
 			elements.forEach(element => {
 				let newRow = table.insertRow(-1);
@@ -241,22 +226,16 @@ function getReport() {
 				let newText1 = document.createTextNode(element['career']);
 				cell1.appendChild(newText1);
 				let cell2 = newRow.insertCell(1);
-				let newText2 = document.createTextNode(element['year']);
+				let newText2 = document.createTextNode(element['inscriptions']);
 				cell2.appendChild(newText2);
-				let cell3 = newRow.insertCell(2);
-				let newText3 = document.createTextNode(element['studentQuantity']);
-				cell3.appendChild(newText3);
-				let cell4 = newRow.insertCell(3);
-				let newText4 = document.createTextNode(element['studentGraduated']);
-				cell4.appendChild(newText4);
 			})
 		}).catch(function(error) {
 			console.log(error);
 		});
 }
 
-//let selectCareer = document.getElementById('careerList');
-//getCareersList(selectCareer);
+let selectCareer = document.getElementById('careerList');
+getCareersList(selectCareer);
 let careerForInscription = document.getElementById('inscription-career-list');
 getCareersList(careerForInscription);
-//getCities();
+getCities();

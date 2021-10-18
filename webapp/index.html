@@ -153,6 +153,100 @@
 		</h4>
 	</div>
 	
+	<div class="container mb-2">
+		<h3>E. Obtener estudiantes en base a su genero</h3>
+		<form>
+			<div class="form-group">
+				<label for=gender-getBy>Genero</label> <select class="form-control"
+					id="gender-getBy">
+					<option value="male">Hombre</option>
+					<option value="female">Mujer</option>
+					<option value="non-binary">No Binario</option>
+					<option value="other">Otro</option>
+				</select>
+			</div>
+			<button type="button" class="btn btn-primary"
+				id="get-student-byGender">GET</button>
+		</form>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTable">
+			<thead>
+				<tr>
+					<th scope="col">N. Libreta</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Edad</th>
+					<th scope="col">Genero</th>
+					<th scope="col">N. Documento</th>
+					<th scope="col">Ciudad</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTable bodyTableGender">
+
+			</tbody>
+		</table>
+	</div>
+	<div class="container mb-2">
+		<h3>F. Obtener las carreras con inscriptos y ordenadas por cantidad.</h3>
+		<button type="button" class="btn btn-primary" id="getCareers">GET</button>
+	</div>
+	<div class="container">
+		<table class="table" id="myTable">
+			<thead>
+				<tr>
+					<th scope="col">Carrera</th>
+					<th scope="col">Cantidad de Inscriptos</th>
+				</tr>
+			</thead>
+			<tbody id="career-inscriptions">
+
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="container mb-2">
+		<h3>G. Obtener estudiantes de una carrera en base a su ciudad de
+			residencia</h3>
+		<form class="mb-3">
+			<div class="form-group">
+				<label for="carrerList">Carrera</label> <select class="form-control"
+					id="careerList">
+
+				</select>
+			</div>
+
+			<div class="form-group">
+				<label for="cityList">City</label> <select class="form-control"
+					id="cityList">
+
+				</select>
+			</div>
+			<small class="form-text text-muted"> Una combinacion valida	es: VP Accounting y Betong</small>
+			<button type="button" class="btn btn-primary"
+				id="get-student-carrer-city">GET</button>
+		</form>
+	</div>
+	<div class="container mt-3 mb-3">
+		<table class="table" id="myTable">
+			<thead>
+				<tr>
+					<th scope="col">N. Libreta</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Apellido</th>
+					<th scope="col">Edad</th>
+					<th scope="col">Genero</th>
+					<th scope="col">N. Documento</th>
+					<th scope="col">Ciudad</th>
+				</tr>
+			</thead>
+			<tbody class="bodyTable bodyTableStudentCareerCity">
+
+			</tbody>
+		</table>
+	</div>
+	
+	
 	<script type="text/javascript"
 		src="http://momentjs.com/downloads/moment-with-locales.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
