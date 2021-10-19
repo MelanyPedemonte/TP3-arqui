@@ -106,7 +106,7 @@ function addStudent() {
 		body: JSON.stringify(data)
 	})
 		.then(response => {
-			getAllStudent();
+			getCities();
 		})
 		.catch(function(error) {
 			console.log(error);
